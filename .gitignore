@@ -1,0 +1,11 @@
+/client/node_modules
+/node_modules
+/server/node_modules
+/server/.env
+/client/.env
+/server/serviceAccountKey.json
+dump.rdb
+/server/dump.rdb
+/client/build
+.DS_Store
+**/.DS_Store

@@ -1,0 +1,106 @@
+﻿.login_container {
+width: 100%;
+min-height: 100vh;
+background-color: #0d0d14;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.login_form_container {
+width: 900px;
+height: 500px;
+display: flex;
+border-radius: 12px;
+box-shadow: 0px 8px 32px rgba(0,0,0,0.6);
+overflow: hidden;
+}
+.left {
+flex: 2;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+background-color: #14141f;
+}
+.form_container {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.form_container h1 {
+font-size: 36px;
+margin-top: 0;
+background: linear-gradient(135deg, #38bdf8, #34d399, #4ade80);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+.input {
+outline: none;
+border: 1px solid #2a2a40;
+width: 370px;
+padding: 15px;
+border-radius: 8px;
+background-color: #1a1a28;
+margin: 5px 0;
+font-size: 14px;
+color: #e2e2ef;
+transition: border-color 0.2s;
+}
+.input:focus { border-color: #f7971e; }
+.input::placeholder { color: #55557a; }
+.error_msg {
+width: 370px;
+padding: 15px;
+margin: 5px 0;
+font-size: 14px;
+background-color: rgba(255,107,107,0.12);
+color: #ff6b6b;
+border-radius: 8px;
+text-align: center;
+border: 1px solid rgba(255,107,107,0.4);
+}
+.right {
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+background: linear-gradient(160deg, #1c1c2e 0%, #14141f 100%);
+border-left: 1px solid #2a2a40;
+}
+.right h1 {
+margin-top: 0;
+font-size: 32px;
+background: linear-gradient(135deg, #38bdf8, #34d399, #4ade80);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+align-self: center;
+text-align: center;
+padding: 0 20px;
+}
+.white_btn,
+.green_btn {
+border: none;
+outline: none;
+padding: 12px 0;
+border-radius: 20px;
+width: 180px;
+font-weight: bold;
+font-size: 14px;
+cursor: pointer;
+transition: opacity 0.2s, transform 0.15s;
+}
+.white_btn {
+background-color: transparent;
+color: #e2e2ef;
+border: 1px solid #2a2a40;
+}
+.white_btn:hover { border-color: #f7971e; color: #f7971e; }
+.green_btn {
+background: linear-gradient(135deg, #f7971e, #ff6b6b);
+color: white;
+margin: 10px;
+}
+.green_btn:hover { opacity: 0.85; transform: scale(1.03); }
