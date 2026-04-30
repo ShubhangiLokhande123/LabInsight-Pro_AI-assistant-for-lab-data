@@ -1,6 +1,5 @@
 <h1 align="center">
-  <img src="assets/Screenshot 2026-04-30 184024.png" width="60" style="vertical-align:middle" />
-  LabInsight Pro
+LabInsight Pro
 </h1>
 
 <p align="center">
@@ -12,7 +11,7 @@
   <img src="https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white" />
   <img src="https://img.shields.io/badge/Node.js-Express-339933?logo=node.js&logoColor=white" />
   <img src="https://img.shields.io/badge/Redis-Data%20Store-DC382D?logo=redis&logoColor=white" />
-  <img src="https://img.shields.io/badge/Google%20Gemini-AI-4285F4?logo=google&logoColor=white" />
+  <img src="https://img.shields.io/badge/ollama-%23000000.svg?style=for-the-badge&logo=ollama&logoColor=white" />
   <img src="https://img.shields.io/badge/JWT-Auth-000000?logo=jsonwebtokens&logoColor=white" />
 </p>
 
@@ -21,8 +20,6 @@
 ## Demo
 
 > **Watch the full walkthrough:**
-
-<video src="assets/Lan Insight Pro Video Walk-through.mp4" controls width="100%"></video>
 
 > _If the video doesn't render above, [click here to download and watch it](assets/Lan%20Insight%20Pro%20Video%20Walk-through.mp4)._
 
@@ -107,7 +104,6 @@ LabInsight Pro/
 
 - Node.js v18+
 - Redis server running locally (or a Redis URL)
-- Google Gemini API key
 - AWS credentials (for file storage)
 
 ### 1. Clone the repository
@@ -126,7 +122,6 @@ PORT=8080
 JWTPRIVATEKEY=your_jwt_secret_key
 SALT=10
 REDIS_URL=redis://127.0.0.1:6379
-GEMINI_API_KEY=your_google_gemini_api_key
 AWS_ACCESS_KEY_ID=your_aws_access_key
 AWS_SECRET_ACCESS_KEY=your_aws_secret_key
 AWS_REGION=your_aws_region
