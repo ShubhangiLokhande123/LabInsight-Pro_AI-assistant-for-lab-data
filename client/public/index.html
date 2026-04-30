@@ -25,6 +25,31 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Lab Insight Pro - AI Assistant for Lab Data</title>
+    <script>
+      // GitHub Pages SPA: restore path from query param set by 404.html
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+        var search = window.location.search;
+        if (search && search.indexOf('p=/') !== -1) {
+          var p = search.slice(1).split('&').reduce(function(o, s) {
+            var kv = s.split('='); o[kv[0]] = kv.slice(1).join('='); return o;
+          }, {});
+          if (p.p !== undefined) {
+            window.history.replaceState(
+              null, null,
+              window.location.pathname.slice(0, -1) +
+              (p.p || '/') +
+              (p.q ? '?' + p.q.replace(/~and~/g, '&') : '') +
+              window.location.hash
+            );
+          }
+        }
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
