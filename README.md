@@ -15,13 +15,32 @@ LabInsight Pro
   <img src="https://img.shields.io/badge/JWT-Auth-000000?logo=jsonwebtokens&logoColor=white" />
 </p>
 
+<p align="center">
+  <a href="https://shubhangilokhande123.github.io/LabInsight-Pro_AI-assistant-for-lab-data/">
+    <img src="https://img.shields.io/badge/Live%20Demo-%F0%9F%9A%80-brightgreen?style=for-the-badge" alt="Live Demo" />
+  </a>
+  <a href="https://github.com/ShubhangiLokhande123/LabInsight-Pro_AI-assistant-for-lab-data">
+    <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+</p>
+
 ---
 
-## Demo
+## Live Demo
+
+🌐 **[https://shubhangilokhande123.github.io/LabInsight-Pro_AI-assistant-for-lab-data/](https://shubhangilokhande123.github.io/LabInsight-Pro_AI-assistant-for-lab-data/)**
+
+> Note: The live demo shows the frontend UI. For full AI + data features, run the backend locally (see [Getting Started](#getting-started)).
+
+---
+
+## Video Walkthrough
 
 > **Watch the full walkthrough:**
 
-> _If the video doesn't render above, [click here to download and watch it](assets/Lan%20Insight%20Pro%20Video%20Walk-through.mp4)._
+<video src="assets/Lan Insight Pro Video Walk-through.mp4" controls width="100%"></video>
+
+> _If the video doesn't render, [click here to download and watch it](assets/Lan%20Insight%20Pro%20Video%20Walk-through.mp4)._
 
 ---
 
@@ -36,7 +55,7 @@ LabInsight Pro
 ## Features
 
 - **PDF Blood Report Upload** — Upload your blood test PDFs; the app parses them automatically and extracts all biomarkers.
-- **AI Health Chatbot** — Powered by Google Gemini, ask questions about your reports, biomarkers, trends, and health in natural language.
+- **AI Health Chatbot** — Runs locally via **Ollama** (Llama 3.2 / Llama 3.1). Ask questions about your reports, biomarkers, and health in natural language — fully private, no cloud required.
 - **Biomarker Dashboard** — View all biomarkers from your latest report with reference range indicators.
 - **Historical Trend Charts** — Track how any biomarker changes over time with interactive charts.
 - **Lab Reports Library** — Browse all uploaded reports, view original PDFs, and compare results across dates.
@@ -64,13 +83,33 @@ LabInsight Pro
 |---|---|
 | Node.js + Express | REST API server |
 | Redis (ioredis) | Primary data store |
-| Google Generative AI (Gemini) | AI chat responses |
+| Ollama (local LLM) | Primary AI — llama3.2:latest / llama3.1:8b |
 | JWT (jsonwebtoken) | Authentication tokens |
 | bcrypt | Password hashing |
 | Multer | PDF file upload handling |
 | pdf-parse / pdf2table | PDF text & table extraction |
 | AWS SDK | Cloud file storage |
 | Joi | Request validation |
+
+---
+
+## How the RAG Pipeline Works
+
+<p align="center">
+  <img src="assets/RAG.png" alt="RAG Architecture Diagram" width="85%" />
+</p>
+
+LabInsight Pro uses a **context-augmented generation** pipeline to ground every AI answer in your actual lab data:
+
+| Step | What happens |
+|------|--------------|
+| **① User sends a message** | Query arrives at the `/api/conversations/chat` endpoint. |
+| **② Keyword matching** | Server scans the message against a biomarker alias dictionary (`biomarkers.json`). |
+| **③ Data fetched from Redis** | If a biomarker or health keyword is matched, the user's full biomarker history is retrieved from Redis. |
+| **④ Prompt augmented** | Retrieved data + conversation history are injected directly into the prompt as enriched context. |
+| **⑤ Local LLM responds** | The enriched prompt is sent to **Ollama** (`llama3.2` → `llama3.1` fallback) running on your machine. |
+
+> Every answer is grounded in **your personal lab data** — not just general medical knowledge.
 
 ---
 
@@ -102,15 +141,19 @@ LabInsight Pro/
 
 ### Prerequisites
 
-- Node.js v18+
-- Redis server running locally (or a Redis URL)
-- AWS credentials (for file storage)
+- **Node.js** v18+
+- **Redis** running locally (`redis://127.0.0.1:6379`) or a remote Redis URL
+- **Ollama** installed and running with a model pulled:
+  ```bash
+  ollama pull llama3.2
+  ```
+- **AWS credentials** (for S3 file storage)
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/labinsight-pro.git
-cd labinsight-pro
+git clone https://github.com/ShubhangiLokhande123/LabInsight-Pro_AI-assistant-for-lab-data.git
+cd LabInsight-Pro_AI-assistant-for-lab-data
 ```
 
 ### 2. Configure environment variables
@@ -121,7 +164,14 @@ Create a `.env` file inside the `server/` directory:
 PORT=8080
 JWTPRIVATEKEY=your_jwt_secret_key
 SALT=10
+
+# Redis (local by default)
 REDIS_URL=redis://127.0.0.1:6379
+
+# Ollama (local LLM)
+OLLAMA_HOST=http://127.0.0.1:11434
+
+# AWS S3 (file storage)
 AWS_ACCESS_KEY_ID=your_aws_access_key
 AWS_SECRET_ACCESS_KEY=your_aws_secret_key
 AWS_REGION=your_aws_region
