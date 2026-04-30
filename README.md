@@ -21,8 +21,6 @@ LabInsight Pro
 
 > **Watch the full walkthrough:**
 
-https://github.com/ShubhangiLokhande123/LabInsight-Pro_AI-assistant-for-lab-data/raw/main/assets/Lan%20Insight%20Pro%20Video%20Walk-through.mp4
-
 > _If the video doesn't render above, [click here to download and watch it](assets/Lan%20Insight%20Pro%20Video%20Walk-through.mp4)._
 
 ---
