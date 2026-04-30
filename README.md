@@ -26,9 +26,9 @@ LabInsight Pro
 
 ---
 
-## Live Demo
+## Live Website Link
 
-🌐 **[https://shubhangilokhande123.github.io/LabInsight-Pro_AI-assistant-for-lab-data/](https://shubhangilokhande123.github.io/LabInsight-Pro_AI-assistant-for-lab-data/)**
+🌐 <a href="https://shubhangilokhande123.github.io/LabInsight-Pro_AI-assistant-for-lab-data/" target="_blank" rel="noopener noreferrer">Live Demo Website</a>
 
 > Note: The live demo shows the frontend UI. For full AI + data features, run the backend locally (see [Getting Started](#getting-started)).
 
