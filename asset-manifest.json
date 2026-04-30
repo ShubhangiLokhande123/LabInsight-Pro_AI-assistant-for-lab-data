@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/LabInsight-Pro_AI-assistant-for-lab-data/static/css/main.09208674.css",
+    "main.js": "/LabInsight-Pro_AI-assistant-for-lab-data/static/js/main.a30413ed.js",
+    "index.html": "/LabInsight-Pro_AI-assistant-for-lab-data/index.html",
+    "main.09208674.css.map": "/LabInsight-Pro_AI-assistant-for-lab-data/static/css/main.09208674.css.map",
+    "main.a30413ed.js.map": "/LabInsight-Pro_AI-assistant-for-lab-data/static/js/main.a30413ed.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.09208674.css",
+    "static/js/main.a30413ed.js"
+  ]
+}
