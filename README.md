@@ -93,6 +93,19 @@ LabInsight Pro
 
 ---
 
+## System Architecture
+
+```mermaid
+graph TD
+    A[PDF Upload] --> B[AWS S3]
+    B --> C[Text Extraction]
+    C --> D[Redis]
+    D --> E[Ollama]
+    E --> F[Client]
+```
+
+---
+
 ## How the RAG Pipeline Works
 
 <p align="center">
