@@ -97,11 +97,10 @@ LabInsight Pro
 
 ```mermaid
 graph TD
-    A[PDF Upload] --> B[AWS S3]
-    B --> C[Text Extraction]
-    C --> D[Redis]
-    D --> E[Ollama]
-    E --> F[Client]
+    A[PDF Upload] --> B[Text Extraction]
+    B --> C[Redis]
+    C --> D[Ollama]
+    D --> E[Client]
 ```
 
 ---
