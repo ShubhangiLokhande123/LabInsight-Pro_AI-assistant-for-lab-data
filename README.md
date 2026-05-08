@@ -159,7 +159,6 @@ LabInsight Pro/
   ```bash
   ollama pull llama3.2
   ```
-- **AWS credentials** (for S3 file storage)
 
 ### 1. Clone the repository
 
@@ -183,12 +182,6 @@ REDIS_URL=redis://127.0.0.1:6379
 # Ollama (local LLM)
 OLLAMA_HOST=http://127.0.0.1:11434
 
-# AWS S3 (file storage)
-AWS_ACCESS_KEY_ID=your_aws_access_key
-AWS_SECRET_ACCESS_KEY=your_aws_secret_key
-AWS_REGION=your_aws_region
-AWS_S3_BUCKET=your_s3_bucket_name
-```
 
 ### 3. Install dependencies & start the backend
 
