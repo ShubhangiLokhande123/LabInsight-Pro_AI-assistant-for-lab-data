@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/LabInsight-Pro_AI-assistant-for-lab-data/static/css/main.09208674.css",
-    "main.js": "/LabInsight-Pro_AI-assistant-for-lab-data/static/js/main.5c815a42.js",
+    "main.js": "/LabInsight-Pro_AI-assistant-for-lab-data/static/js/main.89378132.js",
     "index.html": "/LabInsight-Pro_AI-assistant-for-lab-data/index.html",
     "main.09208674.css.map": "/LabInsight-Pro_AI-assistant-for-lab-data/static/css/main.09208674.css.map",
-    "main.5c815a42.js.map": "/LabInsight-Pro_AI-assistant-for-lab-data/static/js/main.5c815a42.js.map"
+    "main.89378132.js.map": "/LabInsight-Pro_AI-assistant-for-lab-data/static/js/main.89378132.js.map"
   },
   "entrypoints": [
     "static/css/main.09208674.css",
-    "static/js/main.5c815a42.js"
+    "static/js/main.89378132.js"
   ]
 }
