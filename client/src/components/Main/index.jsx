@@ -59,7 +59,7 @@ function Main() {
                                 <h3>Chat with Lab Insight Pro</h3>
                                 <p>Get instant help with your health questions</p>
                             </div>
-                            <img src="/images/ai_doctor.webp" alt="Chat with AI Doctor" className={styles.card_image} />
+                            <img src={`${process.env.PUBLIC_URL}/images/ai_doctor.webp`} alt="Chat with AI Doctor" className={styles.card_image} />
                         </div>
                     </div>
                     <div className={`${styles.card} ${styles.labtests}`} onClick={reports}>
@@ -68,7 +68,7 @@ function Main() {
                                 <h3>Lab Tests & Reports</h3>
                                 <p>Upload and view your lab test results</p>
                             </div>
-                            <img src="/images/lab_tests.webp" alt="Lab Tests" className={styles.card_image} />
+                            <img src={`${process.env.PUBLIC_URL}/images/lab_tests.webp`} alt="Lab Tests" className={styles.card_image} />
                         </div>
                     </div>
                     <div className={styles.card}>
@@ -77,7 +77,7 @@ function Main() {
                                 <h3>Checkup Plan</h3>
                                 <p>Coming Soon</p>
                             </div>
-                            <img src="/images/checkup.webp" alt="Checkup Plan" className={styles.card_image} />
+                            <img src={`${process.env.PUBLIC_URL}/images/checkup.webp`} alt="Checkup Plan" className={styles.card_image} />
                         </div>
                     </div>
                     <div className={styles.card}>
@@ -86,7 +86,7 @@ function Main() {
                                 <h3>Health Reports</h3>
                                 <p>Coming Soon</p>
                             </div>
-                            <img src="/images/reports.webp" alt="Health Reports" className={styles.card_image} />
+                            <img src={`${process.env.PUBLIC_URL}/images/reports.webp`} alt="Health Reports" className={styles.card_image} />
                         </div>
                     </div>
                     <div className={styles.card}>
@@ -95,7 +95,7 @@ function Main() {
                                 <h3>Consult Top Doctors</h3>
                                 <p>Coming Soon. Online consultation with doctors worldwide</p>
                             </div>
-                            <img src="/images/online.webp" alt="Consult Top Doctors" className={styles.card_image} />
+                            <img src={`${process.env.PUBLIC_URL}/images/online.webp`} alt="Consult Top Doctors" className={styles.card_image} />
                         </div>
                     </div>
                 </div>

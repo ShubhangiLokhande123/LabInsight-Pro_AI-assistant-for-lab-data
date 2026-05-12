@@ -36,7 +36,7 @@ const Reports = () => {
 			</div>
 			<div className={styles.reports_container}>
 				<div className={styles.header}>
-					<img src="/images/labreports.svg" alt="Lab Tests" width="100px" className={styles.icon} />
+					<img src={`${process.env.PUBLIC_URL}/images/labreports.svg`} alt="Lab Tests" width="100px" className={styles.icon} />
 					<h1>Lab Reports & Results</h1>
 					<p>Review your lab reports and test results with ease.</p>
 				</div>
@@ -47,14 +47,14 @@ const Reports = () => {
 						onClick={() => navigate("/reports/labreports")}
 					>
 						<h2>Lab Reports</h2>
-						<img src="/images/lab-test.png" alt="Lab Tests Icon" />
+							<img src={`${process.env.PUBLIC_URL}/images/lab-test.png`} alt="Lab Tests Icon" />
 					</div>
 					<div
 						className={styles.button_card}
 						onClick={() => navigate("/reports/results")}
 					>
 						<h2>View Results</h2>
-						<img src="/images/results.png" alt="View Results Icon" />
+							<img src={`${process.env.PUBLIC_URL}/images/results.png`} alt="View Results Icon" />
 					</div>
 				</div>
 

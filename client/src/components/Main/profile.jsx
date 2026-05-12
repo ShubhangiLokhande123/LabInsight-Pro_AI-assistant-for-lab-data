@@ -117,7 +117,7 @@ const Profile = () => {
                         </div>
                         {/* Center Avatar */}
                         <div className={styles.avatar_container}>
-                            <img src="/images/body.svg" alt="Avatar" className={styles.avatar} />
+                            <img src={`${process.env.PUBLIC_URL}/images/body.svg`} alt="Avatar" className={styles.avatar} />
                         </div>
                     </div>
                 </div>
