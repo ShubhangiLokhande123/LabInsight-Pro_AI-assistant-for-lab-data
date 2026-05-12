@@ -2,6 +2,7 @@ const redis = require("../db");
 const { randomUUID } = require("crypto");
 
 const createBloodReport = async (data) => {
+	if (!redis) throw new Error("Database not available");
     const id = randomUUID();
     const report = {
         id,
@@ -16,6 +17,7 @@ const createBloodReport = async (data) => {
 };
 
 const getBloodReportsByUser = async (userId) => {
+	if (!redis) return [];
     const ids = await redis.lrange(`bloodreports:${userId}`, 0, -1);
     const reports = await Promise.all(
         ids.map(async (id) => {

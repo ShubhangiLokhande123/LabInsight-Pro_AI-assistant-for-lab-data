@@ -2,6 +2,7 @@ const redis = require("../db");
 const { randomUUID } = require("crypto");
 
 const createFile = async (data) => {
+	if (!redis) throw new Error("Database not available");
 	const id = randomUUID();
 	const file = {
 		id,
@@ -18,6 +19,7 @@ const createFile = async (data) => {
 };
 
 const getFilesByUser = async (userId) => {
+	if (!redis) return [];
 	const ids = await redis.lrange(`files:${userId}`, 0, -1);
 	const files = await Promise.all(
 		ids.map(async (id) => {

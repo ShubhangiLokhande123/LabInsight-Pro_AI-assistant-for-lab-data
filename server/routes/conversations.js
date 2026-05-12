@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const { saveMessage, getConversationsByUser, getConversationByID } = require("../controllers/conversationController");
-const { GoogleGenerativeAI } = require("@google/generative-ai");
 const fs = require("fs");
 const path = require("path");
 
@@ -84,28 +83,39 @@ const generateOllamaResponse = async (message, biomarkerData, messages) => {
 	throw new Error("All Ollama models failed");
 };
 
-// Gemini fallback
+// Groq fallback (free, Llama 3)
 const getChatbotResponse = async (message, biomarkerData, messages) => {
 	const fullMessage = buildFullMessage(message, biomarkerData, messages);
-	const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-	const model = genAI.getGenerativeModel({
-		model: "gemini-1.5-flash",
-		systemInstruction: SYSTEM_PROMPT,
+	const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			"Authorization": `Bearer ${process.env.GROQ_API_KEY}`,
+		},
+		body: JSON.stringify({
+			model: "llama3-8b-8192",
+			messages: [
+				{ role: "system", content: SYSTEM_PROMPT },
+				{ role: "user", content: fullMessage },
+			],
+		}),
 	});
-	const result = await model.generateContent(fullMessage);
-	return result.response.text();
+	if (!response.ok) throw new Error(`Groq returned ${response.status} ${response.statusText}`);
+	const data = await response.json();
+	if (!data.choices?.[0]?.message?.content) throw new Error("Groq returned empty content");
+	return data.choices[0].message.content;
 };
 
-// Primary: Ollama; fallback: Gemini
+// Primary: Ollama; fallback: Groq
 const getResponse = async (message, biomarkerData, messages) => {
 	try {
 		return await generateOllamaResponse(message, biomarkerData, messages);
 	} catch (ollamaErr) {
-		console.warn("All Ollama models failed, falling back to Gemini:", ollamaErr.message);
+		console.warn("All Ollama models failed, falling back to Groq:", ollamaErr.message);
 		try {
 			return await getChatbotResponse(message, biomarkerData, messages);
-		} catch (geminiErr) {
-			console.error("Gemini fallback also failed:", geminiErr.message);
+		} catch (groqErr) {
+			console.error("Groq fallback also failed:", groqErr.message);
 			throw new Error("All LLM providers failed");
 		}
 	}

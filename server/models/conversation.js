@@ -1,6 +1,7 @@
 const redis = require("../db");
 
 const saveMessage = async (userId, conversationID, sender, message, topic) => {
+	if (!redis) return;
     const key = `conversation:${userId}:${conversationID.trim()}`;
     const existing = await redis.get(key);
     let conversation = existing
@@ -12,12 +13,14 @@ const saveMessage = async (userId, conversationID, sender, message, topic) => {
 };
 
 const getConversationByID = async (userId, conversationID) => {
+	if (!redis) return [];
     const key = `conversation:${userId}:${conversationID.trim()}`;
     const data = await redis.get(key);
     return data ? JSON.parse(data).messages : [];
 };
 
 const getConversationsByUser = async (userId) => {
+	if (!redis) return [];
     const ids = await redis.smembers(`conversations:${userId}`);
     const conversations = await Promise.all(
         ids.map(async (id) => {

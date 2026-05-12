@@ -9,6 +9,7 @@ const generateAuthToken = (userId) => {
 };
 
 const createUser = async (data) => {
+	if (!redis) throw new Error("Database not available");
 	const id = randomUUID();
 	const user = { id, ...data };
 	await redis.set(`user:${id}`, JSON.stringify(user));
@@ -17,6 +18,7 @@ const createUser = async (data) => {
 };
 
 const findUserByEmail = async (email) => {
+	if (!redis) return null;
 	const id = await redis.get(`email:${email}`);
 	if (!id) return null;
 	const data = await redis.get(`user:${id}`);
@@ -24,6 +26,7 @@ const findUserByEmail = async (email) => {
 };
 
 const findUserById = async (id) => {
+	if (!redis) return null;
 	const data = await redis.get(`user:${id}`);
 	return data ? JSON.parse(data) : null;
 };
