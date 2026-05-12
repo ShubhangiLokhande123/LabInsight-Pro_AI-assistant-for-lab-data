@@ -149,6 +149,41 @@ LabInsight Pro/
 
 ---
 
+## Deployment
+
+### Frontend — GitHub Pages
+
+The React client is deployed to [GitHub Pages](https://pages.github.com/) using the `gh-pages` package.
+
+Live URL: `https://shubhangilokhande123.github.io/LabInsight-Pro_AI-assistant-for-lab-data`
+
+### Backend — Render
+
+The Express server is deployed on [Render](https://render.com) (free tier) using the `render.yaml` Blueprint at the repo root.
+
+| Setting | Value |
+|---------|-------|
+| **Service type** | Web Service |
+| **Root directory** | `server/` |
+| **Build command** | `npm install` |
+| **Start command** | `node index.js` |
+| **Live API URL** | `https://labinsight-pro-server.onrender.com` |
+
+**Environment variables required on Render:**
+
+| Variable | Description |
+|----------|-------------|
+| `REDIS_URL` | Redis Cloud connection string |
+| `JWTPRIVATEKEY` | Secret key for JWT signing |
+| `SALT` | bcrypt salt rounds |
+| `GROQ_API_KEY` | Groq API key for cloud AI fallback |
+
+> Render auto-deploys on every push to the `main` branch via the connected GitHub repository.
+
+> **Note:** Ollama is not available on Render, so the AI automatically falls back to **Groq** (`llama-3.1-8b-instant`).
+
+---
+
 ## Getting Started
 
 ### Prerequisites
