@@ -1,0 +1,14 @@
+[build]
+builder = "nixpacks"
+buildCommand = "npm run build"
+
+[deploy]
+startCommand = "npx serve -s build -l $PORT"
+healthcheckPath = "/"
+healthcheckTimeout = 30
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+
+[[deploy.envVars]]
+name = "REACT_APP_API_BASE_URL"
+description = "Full URL of the deployed backend API server (e.g. https://your-server.up.railway.app). No trailing slash."

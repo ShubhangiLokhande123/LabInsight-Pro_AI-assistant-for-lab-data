@@ -1,0 +1,51 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "node index.js"
+healthcheckPath = "/"
+healthcheckTimeout = 30
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+
+[[deploy.envVars]]
+name = "PORT"
+description = "Port the server listens on. Railway sets this automatically."
+default = "8080"
+
+[[deploy.envVars]]
+name = "JWTPRIVATEKEY"
+description = "Secret key used to sign and verify JSON Web Tokens. Use a long random string."
+
+[[deploy.envVars]]
+name = "SALT"
+description = "bcrypt salt rounds for password hashing."
+default = "10"
+
+[[deploy.envVars]]
+name = "REDIS_URL"
+description = "Redis connection URL. Add a Redis plugin in Railway and reference it as ${{Redis.REDIS_URL}}."
+
+[[deploy.envVars]]
+name = "GEMINI_API_KEY"
+description = "Google Gemini API key used by the chatbot. Obtain from https://aistudio.google.com/app/apikey."
+
+[[deploy.envVars]]
+name = "OLLAMA_HOST"
+description = "Optional. Ollama host URL for local LLM inference. Leave unset to use Gemini only."
+
+[[deploy.envVars]]
+name = "AWS_ACCESS_KEY_ID"
+description = "AWS access key ID for S3 file storage."
+
+[[deploy.envVars]]
+name = "AWS_SECRET_ACCESS_KEY"
+description = "AWS secret access key for S3 file storage."
+
+[[deploy.envVars]]
+name = "AWS_REGION"
+description = "AWS region where the S3 bucket is located (e.g. us-east-1)."
+
+[[deploy.envVars]]
+name = "AWS_S3_BUCKET"
+description = "Name of the S3 bucket used to store uploaded lab report files."
